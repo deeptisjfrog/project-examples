@@ -10,13 +10,17 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+- task: JFrogGradle@1
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
+    gradleBuildFile: 'build.gradle.kts'
+    tasks: 'artifactoryPublish'
+    artifactoryResolverService: 'artifactory v22'
+    sourceRepo: 'pruthvi-gradle-release'
+    artifactoryDeployerService: 'artifactory v22'
+    targetRepo: 'pruthvi-gradle-dev-local'
+    usesPlugin: true
+    useWrapper: true
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
