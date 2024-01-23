@@ -14,9 +14,9 @@ steps:
   inputs:
     gradleBuildFile: 'build.gradle.kts'
     tasks: 'artifactoryPublish'
-    artifactoryResolverService: 'artifactory v22'
+    artifactoryResolverService: 'art'
     sourceRepo: 'pruthvi-gradle-release'
-    artifactoryDeployerService: 'artifactory v22'
+    artifactoryDeployerService: 'art'
     targetRepo: 'pruthvi-gradle-dev-local'
     usesPlugin: true
     useWrapper: true
